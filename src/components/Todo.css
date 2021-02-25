@@ -1,7 +1,11 @@
-.completed {
+.todo {
+  margin-top: 5px;
+}
+
+.todo .completed {
   color:green;
 }
 
-.uncompleted {
+.todo .uncompleted {
   color:red;
 }

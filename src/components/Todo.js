@@ -3,12 +3,11 @@
 // title string
 // completed Bool
 
-import React from "react";
-function Todo({ todo }) {
-  return <div className="todo">{todo.text}</div>;
-}
-/*
-const Todo = ({ todo }) => {
+import React, { useState } from "react";
+import "./Todo.css";
+
+const Todo = (props) => {
+  const { todo } = props;
   const { title } = todo;
   const [completed, setCompleted] = useState(todo.completed);
 
@@ -17,15 +16,15 @@ const Todo = ({ todo }) => {
   };
 
   return (
-    <div>
-      {console.log(title)}
-      <h1>
-        {title}
-        {completed ? "completed" : "uncompleted"}
-      </h1>
-      <button onClick={handleCompleteClick}></button>
+    <div className="todo">
+      <button
+        className={completed ? "completed" : "uncompleted"}
+        onClick={handleCompleteClick}
+      >
+        <h1>{title}</h1>
+      </button>
     </div>
   );
 };
-*/
+
 export default Todo;
