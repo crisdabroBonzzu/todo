@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { selectors } from "../../reducers/todos";
 import Todo from "../Todo/Todo";
 
-const TodoList = () => {
-  const [todoList, setTodoList] = useState([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/")
-      .then((res) => res.json())
-      .then((data) => {
-        setTodoList(data);
-      })
-      .catch(console.log);
-  }, []);
-
+const TodoList = ({ todos }) => {
   return (
     <div>
-      {todoList.map((t, index) => (
+      {todos.map((t, index) => (
         <Todo key={index} todo={t} />
       ))}
     </div>
   );
 };
 
-export default TodoList;
+const mapStateToProps = (state) => ({
+  todos: selectors.getTodos(state),
+});
+
+export default connect(mapStateToProps)(TodoList);
