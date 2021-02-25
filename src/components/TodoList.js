@@ -15,9 +15,9 @@ const TodoList = () => {
 
   return (
     <div>
-      {todoList.forEach((t, index) => {
-        <Todo key={index} todo={t} />;
-      })}
+      {todoList.map((t, index) => (
+        <Todo key={index} todo={t} />
+      ))}
     </div>
   );
 };
